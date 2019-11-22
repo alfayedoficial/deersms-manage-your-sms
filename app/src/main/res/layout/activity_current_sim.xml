@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_backgroundhome"
+    tools:context=".view.activity.CurrentSIMActivity">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/trashhandfont"
+        android:text="@string/current_sim"
+        android:textColor="@color/textcolor"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageBtnReset_CurrentSIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="15dp"
+        android:background="@null"
+        app:layout_constraintBottom_toTopOf="@+id/edtname_CurrentSIM"
+        app:layout_constraintEnd_toEndOf="@+id/edtname_CurrentSIM"
+        app:srcCompat="@drawable/ic_reset" />
+
+    <EditText
+        android:id="@+id/edtname_CurrentSIM"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:autofillHints="number"
+        android:background="@drawable/btn_start"
+        android:ems="10"
+        android:hint="@string/name"
+        android:inputType="none|text"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/textcolor"
+        android:textColorHint="@color/textcolor"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/edtNumber_CurrentSIM"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="50dp"
+        android:autofillHints="number"
+        android:background="@drawable/btn_start"
+        android:ems="10"
+        android:hint="@string/choose_number"
+        android:inputType="none|phone"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/textcolor"
+        android:textColorHint="@color/textcolor"
+        android:textSize="20sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtname_CurrentSIM" />
+
+    <EditText
+        android:id="@+id/edtGroup_CurrentSIM"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="50dp"
+        android:autofillHints="number"
+        android:background="@drawable/btn_start"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="none|phone"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/textcolor"
+        android:textColorHint="@color/textcolor"
+        android:textSize="20sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtname_CurrentSIM" />
+
+    <EditText
+        android:id="@+id/edtMessage_CurrentSIM"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="50dp"
+        android:autofillHints="Text"
+        android:background="@drawable/btn_start"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="@string/type_your_message"
+        android:inputType="textMultiLine"
+        android:overScrollMode="always"
+        android:padding="10dp"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:singleLine="false"
+        android:textColor="@color/textcolor"
+        android:textColorHint="@color/textcolor"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageBtnSpeaker_CurrentSIM" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/trashhandfont"
+        android:text="@string/time"
+        android:textColor="@color/textcolor"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="@+id/edtMessage_CurrentSIM"
+        app:layout_constraintTop_toBottomOf="@+id/edtMessage_CurrentSIM"
+        tools:visibility="visible" />
+
+    <RadioGroup
+        android:id="@+id/checkerButtonTime_CurrentSIM"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/textView8"
+        app:layout_constraintEnd_toEndOf="@+id/edtMessage_CurrentSIM"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toTopOf="@+id/textView8">
+
+        <RadioButton
+            android:id="@+id/radioBtnNow_CurrentSIM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_weight="2"
+            android:focusable="auto"
+            android:fontFamily="@font/trashhandfont"
+            android:text="@string/now"
+            android:textColor="@color/textcolor"
+            android:textColorHint="@color/colorAccent"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radioBtnCustom_CurrentSIM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/trashhandfont"
+            android:text="@string/custom"
+            android:textColor="@color/textcolor"
+            android:textColorHint="@color/colorAccent"
+            android:textSize="20sp" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_CurrentSIM"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/edtMessage_CurrentSIM"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/edtMessage_CurrentSIM">
+
+        <EditText
+            android:id="@+id/editDate_CurrentSIM"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_start"
+            android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="@string/date"
+            android:inputType="date"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/textcolor"
+            android:textColorHint="@color/textcolor" />
+
+        <EditText
+            android:id="@+id/editTime_CurrentSIM"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_start"
+            android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="@string/time2"
+            android:inputType="time"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/textcolor"
+            android:textColorHint="@color/textcolor" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/imageBtnChecker_CurrentSIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@null"
+        app:layout_constraintBottom_toTopOf="@+id/imageBtnAttach_CurrentSIM"
+        app:layout_constraintEnd_toEndOf="@+id/edtname_CurrentSIM"
+        app:layout_constraintTop_toBottomOf="@+id/edtname_CurrentSIM"
+        app:srcCompat="@drawable/ic_phone_book" />
+
+    <ImageButton
+        android:id="@+id/imageBtnAttach_CurrentSIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@null"
+        app:layout_constraintEnd_toEndOf="@+id/edtMessage_CurrentSIM"
+        app:layout_constraintTop_toTopOf="@+id/imageBtnSpeaker_CurrentSIM"
+        app:srcCompat="@drawable/ic_attachment" />
+
+    <ImageButton
+        android:id="@+id/imageBtnSend_CurrentSIM"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/btn_start"
+        android:paddingStart="20dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/edtMessage_CurrentSIM"
+        app:layout_constraintStart_toStartOf="@+id/edtMessage_CurrentSIM"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:srcCompat="@drawable/ic_sent_mail" />
+
+    <ImageView
+        android:id="@+id/imageBtnSpeaker_CurrentSIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageBtnAttach_CurrentSIM"
+        app:layout_constraintTop_toBottomOf="@+id/edtname_CurrentSIM"
+        app:srcCompat="@drawable/ic_microphone" />
+
+    <ImageButton
+        android:id="@+id/imageBtnContacts_CurrentSIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:background="@null"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/imageBtnChecker_CurrentSIM"
+        app:layout_constraintEnd_toEndOf="@+id/imageBtnChecker_CurrentSIM"
+        app:layout_constraintStart_toStartOf="@+id/imageBtnChecker_CurrentSIM"
+        app:srcCompat="@drawable/ic_phone_book" />
+
+    <ImageButton
+        android:id="@+id/imageBtnGroups_CurrentSIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:background="@null"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/imageBtnContacts_CurrentSIM"
+        app:layout_constraintEnd_toEndOf="@+id/imageBtnContacts_CurrentSIM"
+        app:layout_constraintStart_toStartOf="@+id/imageBtnContacts_CurrentSIM"
+        app:srcCompat="@drawable/ic_businessmen" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
