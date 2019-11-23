@@ -69,5 +69,18 @@
     <string name="whatsapp">WhatsApp</string>
     <string name="no_plan">No Plan</string>
     <string name="confirm">Confirm</string>
+    <string name="group">Group</string>
+    <string name="sms">SMS</string>
+
+    <string-array name="choose_activity">
+        <item> WhatsApp Plan </item>
+        <item> Current SIM Plan </item>
+        <item> No Plan</item>
+    </string-array>
+
+    <string-array name="choose_activityGroup">
+        <item> Current SIM Plan </item>
+        <item> No Plan</item>
+    </string-array>
 
 </resources>

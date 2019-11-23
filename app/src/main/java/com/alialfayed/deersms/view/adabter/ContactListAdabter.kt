@@ -9,10 +9,14 @@ import android.view.ViewGroup
 import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.alialfayed.deersms.R
 import com.alialfayed.deersms.model.ContactList
+import com.alialfayed.deersms.view.activity.AddMessageActivity
 import com.alialfayed.deersms.view.activity.CurrentSIMActivity
+import com.alialfayed.deersms.view.activity.WhatsAppActivity
 import kotlinx.android.synthetic.main.cardview_contacts.view.*
 
 
@@ -28,7 +32,18 @@ class ContactListAdabter : RecyclerView.Adapter<ContactListAdabter.HolderClass>(
         fun onItemChangeListener(position: Int, model: ContactList)
     }
 
+    var positionlist = 0
+
+    interface SingleChoiceListener {
+        fun onPositiveButtonClicked(list: Array<String>, position: Int)
+        fun onNegativeButtonClicked()
+    }
+
+    var mListener: SingleChoiceListener? = null
+
+
     private var context: Context? = null
+    private lateinit var contectcontacts :Context
     private var checker: Boolean = true
     //    private lateinit var groupContactsActivity :GroupContactsActivity
     private var list: MutableList<ContactList>? = null
@@ -86,10 +101,42 @@ class ContactListAdabter : RecyclerView.Adapter<ContactListAdabter.HolderClass>(
 
         holder.view.setOnClickListener {
             if (checker) {
-                val intent = Intent(context, CurrentSIMActivity::class.java)
-                intent.putExtra("nameContact", contact.name)
-                intent.putExtra("phoneContact", contact.number)
-                context?.startActivity(intent)
+
+                val builder = AlertDialog.Builder(context!!)
+                val list = context!!.resources.getStringArray(R.array.choose_activity)
+                builder.setTitle("Choose Plan")
+                    .setIcon(R.drawable.ic_logo)
+                    .setSingleChoiceItems(list, positionlist) { _, i -> this.positionlist = i }
+                    .setPositiveButton("Ok") { _, _ ->
+                        when (positionlist) {
+                            0 -> {
+                                val intent = Intent(context, WhatsAppActivity::class.java)
+                                intent.putExtra("nameContact", contact.name)
+                                intent.putExtra("phoneContact", contact.number)
+                                context!!.startActivity(intent)
+                            }
+                            1 -> {
+                                val intent = Intent(context, CurrentSIMActivity::class.java)
+                                intent.putExtra("nameContact", contact.name)
+                                intent.putExtra("phoneContact", contact.number)
+                                context!!.startActivity(intent)
+                            }
+                            3 -> {
+                                val intent = Intent(context, AddMessageActivity::class.java)
+                                intent.putExtra("nameContact", contact.name)
+                                intent.putExtra("phoneContact", contact.number)
+                                context!!.startActivity(intent)
+                            }
+                        }
+                    }
+                    .setNegativeButton(
+                        "Cancel"
+                    ) { _, _ -> mListener?.onNegativeButtonClicked() }.show()
+
+
+
+
+
 //            activity?.finish()
             } else {
                 val model1: ContactList = list!!.get(position)

@@ -19,6 +19,21 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".view.activity.FQRActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.SettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.EditMessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.AddMessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".view.activity.ContactsWhatsAppActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -72,6 +87,7 @@
             android:name=".utils.SMSReceiver"
             android:enabled="true"
             android:exported="true" />
+
         <receiver
             android:name=".utils.WhatsAppReceiver"
             android:enabled="true"

@@ -63,8 +63,8 @@ class ChoosePlanActivity : AppCompatActivity() {
                 startActivity(Intent(this,WhatsAppActivity::class.java))
                 finish()
             }else if(radioBtnNoPlan_ChooseYourPlan.isChecked){
-//                startActivity(Intent(this,AddMessageActivity::class.java))
-//                finish()
+                startActivity(Intent(this,AddMessageActivity::class.java))
+                finish()
 
             }
         }

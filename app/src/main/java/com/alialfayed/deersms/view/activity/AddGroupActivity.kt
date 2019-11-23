@@ -2,7 +2,9 @@ package com.alialfayed.deersms.view.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.RadioGroup
 import android.widget.SearchView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -25,6 +27,9 @@ class AddGroupActivity : AppCompatActivity(), ContactListAdabter.ChnageStatusLis
 
     private var auth: FirebaseAuth? = null
 
+    private lateinit var radioGroup_KindGroup: RadioGroup
+    private  var  kindGroup :Boolean =true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_group)
@@ -34,6 +39,18 @@ class AddGroupActivity : AppCompatActivity(), ContactListAdabter.ChnageStatusLis
         addGroupViewModel = ViewModelProviders.of(this, CreatGroupViewModelFactory(this)).get(
             AddGroupViewModel::class.java
         )
+
+        radioGroup_KindGroup = checkerBtnKindGroup_AddGroup
+        radioGroup_KindGroup.setOnCheckedChangeListener { radioGroup, i ->
+            when(i){
+                R.id.radioBtnSMS_AddGroup ->{
+                    kindGroup = true
+                }
+                R.id.radioBtnWhatsApp_AddGroup -> {
+                    kindGroup = false
+                }
+            }
+        }
 
 
 
@@ -50,28 +67,56 @@ class AddGroupActivity : AppCompatActivity(), ContactListAdabter.ChnageStatusLis
 
 
         imageBtnAdd_AddGroup.setOnClickListener {
-            val groupName = edtNameGroup_AddGroup.text!!.trim().toString()
-            if (!groupName.isEmpty()) {
-                val list = ArrayList<ContactList>()
-                addGroupViewModel.getContacts()!!.observe(
-                    this, object : Observer<MutableList<ContactList>> {
-                        override fun onChanged(contacts: MutableList<ContactList>?) {
-                            for (i in contacts!!.indices) {
-                                if (contacts.get(i).isSelected()) {
-                                    list.add(contacts.get(i))
-                                }
-                            }
-                        }
-                    })
-                /**
-                 * inset group to firebase
-                 */
-                    addGroupViewModel.uploadGroup(list , groupName)
-            }
-            val intent = Intent(this,HomeActivity::class.java)
-            startActivity(intent)
-            finish()
+           if (kindGroup){
+               val groupName = edtNameGroup_AddGroup.text!!.trim().toString()
+               if (!groupName.isEmpty()) {
+                   val list = ArrayList<ContactList>()
+                   addGroupViewModel.getContacts()!!.observe(
+                       this, object : Observer<MutableList<ContactList>> {
+                           override fun onChanged(contacts: MutableList<ContactList>?) {
+                               for (i in contacts!!.indices) {
+                                   if (contacts.get(i).isSelected()) {
+                                       list.add(contacts.get(i))
+                                   }
+                               }
+                           }
+                       })
+                   /**
+                    * inset group to firebase
+                    */
+                   addGroupViewModel.uploadGroup(list, groupName, "SMS")
+               }
+               val intent = Intent(this,HomeActivity::class.java)
+               startActivity(intent)
+               finish()
+           }else{
+               val groupName = edtNameGroup_AddGroup.text!!.trim().toString()
+               if (!groupName.isEmpty()) {
+                   val list = ArrayList<ContactList>()
+                   addGroupViewModel.getContacts()!!.observe(
+                       this, object : Observer<MutableList<ContactList>> {
+                           override fun onChanged(contacts: MutableList<ContactList>?) {
+                               for (i in contacts!!.indices) {
+                                   if (contacts.get(i).isSelected()) {
+                                       list.add(contacts.get(i))
+                                   }
+                               }
+                           }
+                       })
+                   /**
+                    * inset group to firebase
+                    */
+                   addGroupViewModel.uploadGroup(list, groupName, "WhatsApp")
+               }
+               val intent = Intent(this,HomeActivity::class.java)
+               startActivity(intent)
+               finish()
+           }
         }
+
+
+
+
     }
 
     override fun onStart() {

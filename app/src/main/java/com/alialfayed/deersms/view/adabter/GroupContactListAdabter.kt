@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Filterable
 import android.widget.ImageView
+import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.alialfayed.deersms.R
 import com.alialfayed.deersms.model.ContactList
 import com.alialfayed.deersms.view.activity.CurrentSIMActivity
 import kotlinx.android.synthetic.main.cardview_contacts.view.*
@@ -76,6 +78,7 @@ class GroupContactListAdabter : RecyclerView.Adapter<GroupContactListAdabter.Hol
             }
             notifyItemChanged(holder.position!!)
         })
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderClass {
@@ -101,6 +104,9 @@ class GroupContactListAdabter : RecyclerView.Adapter<GroupContactListAdabter.Hol
         val contactImage: ImageView
         val view: View
         var position: Int? = 0
+
+
+
 
         @SuppressLint("ResourceAsColor")
         constructor(itemView: View) : super(itemView) {

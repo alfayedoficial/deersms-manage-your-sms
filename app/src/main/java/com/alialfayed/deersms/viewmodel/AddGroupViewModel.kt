@@ -28,9 +28,9 @@ class AddGroupViewModel(addGroupActivityRef: AddGroupActivity) : ViewModel() {
         firebaseHandler = FirebaseHandler(addGroupActivityRef,this)
     }
 
-    fun uploadGroup(list : ArrayList<ContactList>, groupName: String) {
+    fun uploadGroup(list : ArrayList<ContactList>, groupName: String, kind:String) {
 //        groupsRepository!!.insetGroup(list ,groupName )
-        firebaseHandler.insetGroup(list ,groupName)
+        firebaseHandler.insetGroup(list ,groupName , kind)
     }
 
 

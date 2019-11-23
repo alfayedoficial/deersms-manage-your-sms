@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel
 import com.alialfayed.deersms.R
 import com.alialfayed.deersms.repository.FirebaseHandler
 import com.alialfayed.deersms.view.activity.*
+import kotlinx.android.synthetic.main.activity_add_message.*
 import kotlinx.android.synthetic.main.activity_current_sim.*
 import java.util.*
 
@@ -173,6 +174,7 @@ class CurrentSIMViewModel(val currentSIMActivity: CurrentSIMActivity):ViewModel(
                 }
             }
         }
+
 
         if (currentSIMActivity.intent.getStringExtra("phoneContact") != null || currentSIMActivity.intent.getStringExtra("nameContact" ) != null ) {
             val textName: String = currentSIMActivity.intent.getStringExtra("nameContact")

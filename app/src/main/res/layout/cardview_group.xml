@@ -20,10 +20,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="20dp"
-            android:fontFamily="@font/trashhandfont"
+            android:layout_marginEnd="10dp"
             android:textColor="@color/textcolor"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/txtKindGroup_cardview_group"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="message" />
@@ -32,15 +32,27 @@
             android:id="@+id/txtGroupnumber_cardview_group"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/trashhandfont"
             android:text="TextView"
             android:textColor="@color/textcolor"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/txtGroupName_cardview_group"
+            app:layout_constraintEnd_toEndOf="@+id/txtKindGroup_cardview_group"
+            app:layout_constraintStart_toEndOf="@+id/txtGroupnumber_cardview_group2"
+            app:layout_constraintTop_toBottomOf="@+id/txtKindGroup_cardview_group" />
+
+        <TextView
+            android:id="@+id/txtGroupnumber_cardview_group2"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/contacts"
+            android:textColor="@color/textcolor"
+            android:textSize="14sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/txtGroupName_cardview_group"
-            app:layout_constraintTop_toBottomOf="@+id/txtGroupName_cardview_group" />
+            app:layout_constraintTop_toBottomOf="@+id/txtKindGroup_cardview_group" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -74,6 +86,15 @@
                 android:textSize="16sp" />
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/txtKindGroup_cardview_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/txtGroupName_cardview_group"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="@+id/txtGroupName_cardview_group"
+            app:srcCompat="@drawable/ic_sms" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

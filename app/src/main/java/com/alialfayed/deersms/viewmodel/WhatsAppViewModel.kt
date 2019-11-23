@@ -277,6 +277,7 @@ class WhatsAppViewModel (val whatsAppActivity : WhatsAppActivity): ViewModel() {
         intent.putExtra("tePhone", phone)
         intent.putExtra("whatsApp","whatsApp")
         whatsAppActivity.startActivityForResult(intent, resultTemplate)
+        whatsAppActivity.finish()
     }
 
     fun checker() {
@@ -295,6 +296,7 @@ class WhatsAppViewModel (val whatsAppActivity : WhatsAppActivity): ViewModel() {
         val intent = Intent(whatsAppActivity, ContactsWhatsAppActivity::class.java)
         intent.putExtra("whatsAppMode","goBack")
         whatsAppActivity.startActivity(intent)
+        whatsAppActivity.finish()
     }
 
     fun setInitComponentWhatsAppActivity() {

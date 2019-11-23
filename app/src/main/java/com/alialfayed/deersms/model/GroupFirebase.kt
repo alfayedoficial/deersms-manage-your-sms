@@ -9,6 +9,7 @@ class GroupFirebase {
     private lateinit var groupName: String
     private lateinit var groupNumbers: ArrayList<ContactList>
     private lateinit var userID: String
+    private lateinit var kindGroup:String
 
     //    constructor(userid: String, groupName: String, groupMembers: ArrayList<ContactList>) {
 //        this.groupId = userid
@@ -21,12 +22,14 @@ class GroupFirebase {
         userID: String,
         groupId: String,
         groupName: String,
-        groupNumbers: ArrayList<ContactList>
+        groupNumbers: ArrayList<ContactList>,
+        kindGroup :String
     ) {
         this.userID = userID
         this.groupId = groupId
         this.groupName = groupName
         this.groupNumbers = groupNumbers
+        this.kindGroup = kindGroup
     }
 
 
@@ -45,5 +48,7 @@ class GroupFirebase {
     fun getGroupNumbers(): ArrayList<ContactList> {
         return groupNumbers
     }
+
+    fun getKindGroup() :String{ return kindGroup}
 
 }

@@ -31,13 +31,9 @@ class FirebaseHandler(activity: Activity) {
     lateinit var currentSIMViewModel: CurrentSIMViewModel
     lateinit var addGroupViewModel: AddGroupViewModel
     lateinit var whatsAppViewModel : WhatsAppViewModel
+    lateinit var addMessageViewModel: AddMessageViewModel
+    lateinit var profileViewModel: ProfileViewModel
 
-
-//    var addGroupViewModel: AddGroupViewModel? = null
-//    lateinit var profileViewModel: ProfileViewModel
-//    lateinit var scheduleMessageViewModel: ScheduleMessageViewModel
-//    lateinit var addMessageViewModel: AddMessageViewModel
-//    internal lateinit var updateList: ArrayList<MessageFirebase>
 
 
     var activity: Activity? = null
@@ -98,22 +94,24 @@ class FirebaseHandler(activity: Activity) {
         databaseReference = FirebaseDatabase.getInstance().getReference("Message")
     }
 
+        constructor(activity: Activity, addMessageViewModel: AddMessageViewModel)
+            : this(activity) {
+        this.addMessageViewModel = addMessageViewModel
+        mAuth = FirebaseAuth.getInstance()
+        currentUser = mAuth.currentUser
+        databaseReference = FirebaseDatabase.getInstance().getReference("Message")
+    }
 
-//    constructor(activity: Activity, profileViewModel: ProfileViewModel)
-//            : this(activity) {
-//        this.profileViewModel = profileViewModel
-//        mAuth = FirebaseAuth.getInstance()
-//        currentUser = mAuth.currentUser
-//    }
+
+    constructor(activity: Activity, profileViewModel: ProfileViewModel)
+            : this(activity) {
+        this.profileViewModel = profileViewModel
+        mAuth = FirebaseAuth.getInstance()
+        currentUser = mAuth.currentUser
+    }
 
 
-//    constructor(activity: Activity, addMessageViewModel: AddMessageViewModel)
-//            : this(activity) {
-//        this.addMessageViewModel = addMessageViewModel
-//        mAuth = FirebaseAuth.getInstance()
-//        currentUser = mAuth.currentUser
-//        databaseReference = FirebaseDatabase.getInstance().getReference("Message")
-//    }
+
 
 //    constructor(activity: Activity, addGroupViewModel: AddGroupViewModel)
 //            : this(activity) {
@@ -123,13 +121,6 @@ class FirebaseHandler(activity: Activity) {
 //        databaseReference = FirebaseDatabase.getInstance().getReference("Groups")
 //    }
 
-//    constructor(activity: Activity, scheduleMessageViewModel: ScheduleMessageViewModel)
-//            : this( activity ) {
-//        this.scheduleMessageViewModel = scheduleMessageViewModel
-//        mAuth = FirebaseAuth.getInstance()
-//        currentUser = mAuth.currentUser
-//        databaseReference = FirebaseDatabase.getInstance().getReference("Message")
-//    }
 
 
 
@@ -219,16 +210,15 @@ class FirebaseHandler(activity: Activity) {
     }
 
 
-    fun scheduleMessageRepository(
+    fun scheduleMessageNoPlanRepository(
         personName: String, personNumber: String, SMSMessage: String,
         date: String, time: String, status: String, type: String,
-        calendar: Long, smsDelivered: String
+        smsDelivered: String, calendar: Long
     ) {
 
         /**
          * create  Message Firebase
          */
-        databaseReference = FirebaseDatabase.getInstance().getReference("Messages")
         val smsId: String = databaseReference.push().key.toString()
         val user: String = FirebaseAuth.getInstance().currentUser!!.uid
         val message = MessageFirebase(
@@ -243,12 +233,19 @@ class FirebaseHandler(activity: Activity) {
         /**
          * set Alarm Message
          */
-//        addMessageViewModel.setSMSAlarm(
-//            message.getSmsId(), message.getSmsReceiverName(),
-//            message.getSmsReceiverNumber(), message.getSmsMsg(), message.getSmsDate(),
-//            message.getSmsTime(), message.getSmsStatus(), message.getSmsType(), message.getUserID(),
-//            message.getSmsCalender(), message.getSmsDelivered()
-//        )
+        addMessageViewModel.setSMSAlarm(
+            message.getSmsId(),
+            message.getSmsPersonName(),
+            message.getSmsPersonNumber(),
+            message.getSmsMessage(),
+            message.getSmsDate(),
+            message.getSmsTime(),
+            message.getSmsStatus(),
+            message.getsmsSendVia(),
+            message.getUserID(),
+            message.getSmsCalender(),
+            message.getSmsDelivered()
+        )
     }
 
     fun scheduleMessageRepository(
@@ -338,7 +335,7 @@ class FirebaseHandler(activity: Activity) {
     }
 
 
-    fun insetGroup(list: ArrayList<ContactList>, groupName: String) {
+    fun insetGroup(list: ArrayList<ContactList>, groupName: String , kind :String) {
         /**
          * create  Group Firebase
          * 1- create id group
@@ -348,7 +345,7 @@ class FirebaseHandler(activity: Activity) {
         databaseReference = FirebaseDatabase.getInstance().getReference("Groups")
         val userId: String = FirebaseAuth.getInstance().currentUser!!.uid
         val groupId = databaseReference.push().key.toString()
-        val group: GroupFirebase = GroupFirebase(userId, groupId, groupName, list)
+        val group: GroupFirebase = GroupFirebase(userId, groupId, groupName, list , kind)
         databaseReference.child(groupId).setValue(group)
 
 
